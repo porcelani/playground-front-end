@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Carros</title>
+    <style media="screen">
+      #formNovoCarro * {
+        box-sizing: border-box;
+      }
+      #formNovoCarro label {
+        width: 16%;
+        float: left;
+        text-align: right;
+      }
+      #formNovoCarro input {
+        width: 84%;
+        float: left;
+      }
+    </style>
+    <script type="text/javascript" src="aplication.js"></script>
+    <script type="text/javascript" src="sistemaCarro.js"></script>
+  </head>
+  <body>
+      <h1>Carros</h1>
+      <ul id="lista">
+      </ul>
+
+      <div id="formNovoCarro">
+        <fieldset>
+            <legend>Novo Carro</legend>
+            <label for="fabricante">Fabricante:</label><input type="text" id="fabricante" value=""><br>
+            <label for="modelo">Modelo:</label><input type="text" id="modelo" value=""><br>
+            <label for="ano">Ano:</label><input type="text" id="ano" value=""><br>
+            <label for="cor">Cor:</label><input type="text" id="cor" value=""><br>
+            <label for="placa">Placa:</label><input type="text" id="placa" value=""><br>
+            <button type="button" id="btnAdicionar">adicionar</button>
+            <button type="button" id="desativaValPlaca">desativa validação da placa</button>
+        </fieldset>
+      </div>
+  </body>
+</html>
