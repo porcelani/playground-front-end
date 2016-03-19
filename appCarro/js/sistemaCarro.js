@@ -1,41 +1,7 @@
+$.getScript("../appCarro/js/carro.js");
+$.getScript("../appCarro/js/Simulacao.js");
+
 function SistemaCarro(){
-
-  var codigoCarro = 0;
-  var idSimulacao = 0;
-
-  function Carro(fab, mod, ano, cor, pla){
-    codigoCarro++;
-
-    this.codigoCarro = codigoCarro;
-    this.fabricante = fab;
-    this.modelo = mod;
-    this.ano = ano;
-    this.cor = cor;
-    this.placa = (function(str){
-        return str.toUpperCase();
-    })(pla);
-    this.toString = function(){
-      return this.fabricante + ' ' + this.modelo + ' ' + this.ano + ' ' + this.cor + ' (' + this.placa + ')';
-    }
-  }
-
-  function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino){
-    idSimulacao++;
-
-    this.idSimulacao = idSimulacao;
-    this.codigoCarro = codigoCarro;
-    this.nomeCliente = nomeCliente;
-    this.opcao = opcao;
-    this.dataInicio = dataInicio;
-    this.dataTermino = dataTermino;
-    this.origem = origem;
-    this.destino = destino;
-
-    this.toString = function(){
-      return this.idSimulacao + ' ' + this.codigoCarro + ' ' + this.nomeCliente + ' ' + this.opcao + ' ' +
-          this.dataInicio + ' ' + this.dataTermino + ' ' + this.origem + ' ' + this.destino;
-    }
-  }
 
   function novoCarro(event){
     //console.log('Alguém clicou no botão!')
