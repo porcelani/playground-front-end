@@ -13,6 +13,24 @@ function SistemaCarro(){
     }
   }
 
+  function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino){
+    idSimulacao++;
+
+    this.idSimulacao = idSimulacao;
+    this.codigoCarro = codigoCarro;
+    this.nomeCliente = nomeCliente;
+    this.opcao = opcao;
+    this.dataInicio = dataInicio;
+    this.dataTermino = dataTermino;
+    this.origem = origem;
+    this.destino = destino;
+
+    this.toString = function(){
+      return this.idSimulacao + ' ' + this.codigoCarro + ' ' + this.nomeCliente + ' ' + this.opcao + ' ' +
+          this.dataInicio + ' ' + this.dataTermino + ' ' + this.origem + ' ' + this.destino;
+    }
+  }
+
   function novoCarro(event){
     //console.log('Alguém clicou no botão!')
     //console.log(event);
@@ -27,6 +45,23 @@ function SistemaCarro(){
     console.log('Adicionando ' + carro.toString());
     console.log(carros);
     adicionaCarroALista(carro);
+    event.preventDefault();
+  }
+
+  function novaSimulacao(event){
+    var simulacao = new Simulacao(
+        document.getElementById('codigoCarro').value,
+        document.getElementById('nomeCliente').value,
+        document.getElementById('opcao').value,
+        document.getElementById('dataInicio').value,
+        document.getElementById('dataTermino').value,
+        document.getElementById('origem').value,
+        document.getElementById('destino').value
+    );
+
+    simulacoes.push(simulacao);
+    console.log('Adicionando ' + simulacao.toString());
+    console.log(simulacoes);
     event.preventDefault();
   }
 
@@ -53,6 +88,7 @@ function SistemaCarro(){
   }
 
   var carros = [];
+  var simulacoes = [];
 
   var btnAdicionar = document.getElementById('btnAdicionar');
   btnAdicionar.addEventListener('click', novoCarro);
