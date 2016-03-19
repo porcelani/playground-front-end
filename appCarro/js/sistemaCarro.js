@@ -1,6 +1,12 @@
 function SistemaCarro(){
 
+  var codigoCarro = 0;
+  var idSimulacao = 0;
+
   function Carro(fab, mod, ano, cor, pla){
+    codigoCarro++;
+
+    this.codigoCarro = codigoCarro;
     this.fabricante = fab;
     this.modelo = mod;
     this.ano = ano;
@@ -62,7 +68,15 @@ function SistemaCarro(){
     simulacoes.push(simulacao);
     console.log('Adicionando ' + simulacao.toString());
     console.log(simulacoes);
+    adicionarSimulacaoALista(simulacao);
     event.preventDefault();
+  }
+
+  function adicionarSimulacaoALista(simulacao) {
+    var li = document.createElement('li');
+    li.textContent = simulacao.toString();
+    var lista = document.getElementById('listaSimulacao');
+    lista.appendChild(li);
   }
 
   function adicionaCarroALista(carro) {
@@ -92,6 +106,9 @@ function SistemaCarro(){
 
   var btnAdicionar = document.getElementById('btnAdicionar');
   btnAdicionar.addEventListener('click', novoCarro);
+
+  var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
+  btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
 
   var inputPlaca = document.getElementById('placa');
   inputPlaca.addEventListener('keyup', function(){
