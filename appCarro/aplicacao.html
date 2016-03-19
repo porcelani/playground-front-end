@@ -3,39 +3,56 @@
   <head>
     <meta charset="utf-8">
     <title>Carros</title>
-    <style media="screen">
-      #formNovoCarro * {
-        box-sizing: border-box;
-      }
-      #formNovoCarro label {
-        width: 16%;
-        float: left;
-        text-align: right;
-      }
-      #formNovoCarro input {
-        width: 84%;
-        float: left;
-      }
-    </style>
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="aplication.js"></script>
     <script type="text/javascript" src="sistemaCarro.js"></script>
   </head>
-  <body>
+  <body class="">
       <h1>Carros</h1>
       <ul id="lista">
       </ul>
 
-      <div id="formNovoCarro">
+      <form id="formNovoCarro">
         <fieldset>
             <legend>Novo Carro</legend>
-            <label for="fabricante">Fabricante:</label><input type="text" id="fabricante" value=""><br>
-            <label for="modelo">Modelo:</label><input type="text" id="modelo" value=""><br>
-            <label for="ano">Ano:</label><input type="text" id="ano" value=""><br>
-            <label for="cor">Cor:</label><input type="text" id="cor" value=""><br>
-            <label for="placa">Placa:</label><input type="text" id="placa" value=""><br>
+            <div class="form-group">
+              <label class="col-md-3 control-label" for="fabricante">Fabricante:</label>
+              <div class="col-md-9">
+                <input class="form-control" type="text" id="fabricante" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"  for="modelo">Modelo:</label>
+              <div class="col-md-9">
+              <input class="form-control" type="text" id="modelo" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"  for="ano">Ano:</label>
+              <div class="col-md-9">
+              <input class="form-control" type="text" id="ano" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"  for="cor">Cor:</label>
+              <div class="col-md-9">
+              <input class="form-control" type="text" id="cor" value="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-md-3 control-label"  for="placa">Placa:</label>
+              <div class="col-md-9">
+              <input class="form-control" type="text" id="placa" value="">
+            </div>
+            </div>
             <button type="button" id="btnAdicionar">adicionar</button>
             <button type="button" id="desativaValPlaca">desativa validação da placa</button>
         </fieldset>
-      </div>
+      </form>
+
+
   </body>
 </html>

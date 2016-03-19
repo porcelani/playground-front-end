@@ -27,6 +27,7 @@ function SistemaCarro(){
     console.log('Adicionando ' + carro.toString());
     console.log(carros);
     adicionaCarroALista(carro);
+    event.preventDefault();
   }
 
   function adicionaCarroALista(carro) {
@@ -54,7 +55,7 @@ function SistemaCarro(){
   var carros = [];
 
   var btnAdicionar = document.getElementById('btnAdicionar');
-  btnAdicionar.addEventListener('click', novoCarro, false);
+  btnAdicionar.addEventListener('click', novoCarro);
 
   var inputPlaca = document.getElementById('placa');
   inputPlaca.addEventListener('keyup', function(){
@@ -63,6 +64,6 @@ function SistemaCarro(){
   }, false);
 
   var inputDesativar = document.getElementById('desativaValPlaca');
-  inputDesativar.addEventListener('click', desativarValidacaoDaPlaca, false);
+  inputDesativar.addEventListener('click', desativarValidacaoDaPlaca);
 
 }
