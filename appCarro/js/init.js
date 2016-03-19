@@ -14,9 +14,11 @@ function init(){
   loadScript('lib/jquery/dist/jquery.min.js', function(){
     loadScript('lib/bootstrap/dist/js/bootstrap.min.js');
   });
-  loadScript('../appCarro/js/sistemaCarro.js', function(){
-    loadScript('../appCarro/js/entity/Carro.js');
+  loadScript('../appCarro/js/Util.js', function(){
     loadScript('../appCarro/js/entity/Simulacao.js');
-    AppCarro.init();
+    loadScript('../appCarro/js/entity/Carro.js');
+    loadScript('../appCarro/js/sistemaCarro.js', function() {
+      AppCarro.init();
+    });
   });
 }

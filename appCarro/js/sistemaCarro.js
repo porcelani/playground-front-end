@@ -9,7 +9,7 @@ var AppCarro = function SistemaCarro(){
       document.getElementById('ano').value,
       document.getElementById('cor').value,
       document.getElementById('placa').value
-      );
+    );
 
     carros.push(carro);
     console.log('Adicionando ' + carro.toString());
@@ -43,12 +43,7 @@ var AppCarro = function SistemaCarro(){
       var carro = carros[i];
       var modelo = document.getElementById('modeloInformacaoCarro');
       var copia = modelo.content.firstElementChild.cloneNode(true);
-      copia.querySelector('.fabricante').textContent = carro.fabricante;
-      copia.querySelector('.modelo').textContent = carro.modelo;
-      copia.querySelector('.ano').textContent = carro.ano;
-      copia.querySelector('.placa').textContent = carro.placa;
-      copia.querySelector('.cor').textContent = carro.cor;
-
+      Util.replaceWithData(copia, carro);
       var lista = document.getElementById('lista');
       lista.appendChild(copia);
     }
@@ -61,22 +56,13 @@ var AppCarro = function SistemaCarro(){
       var simulacao = simulacoes[i];
       var modelo = document.getElementById('modeloInformacaoSimulacao');
       var copia = modelo.content.firstElementChild.cloneNode(true);
-      copia.querySelector('.codigoCarro').textContent = simulacao.codigoCarro;
-      copia.querySelector('.nomeCliente').textContent = simulacao.nomeCliente;
-      copia.querySelector('.opcao').textContent = simulacao.opcao;
-      copia.querySelector('.dataInicio').textContent = simulacao.dataInicio;
-      copia.querySelector('.dataTermino').textContent = simulacao.dataTermino;
-      copia.querySelector('.origem').textContent = simulacao.origem;
-      copia.querySelector('.destino').textContent = simulacao.destino;
-
+      Util.replaceWithData(copia, simulacao);
       var lista = document.getElementById('listaSimulacao');
       lista.appendChild(copia);
     }
   }
 
   function validaCharsPlaca(event){
-    //console.log(event);
-    //console.log(event.keyCode);
     var inputPlaca = document.getElementById('placa');
     inputPlaca.value = inputPlaca.value.replace(/[^a-z0-9]/gmi,'');
   }
