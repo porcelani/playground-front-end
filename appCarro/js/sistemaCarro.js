@@ -1,5 +1,5 @@
-$.getScript("../appCarro/js/carro.js");
-$.getScript("../appCarro/js/Simulacao.js");
+$.getScript("../appCarro/js/entity/carro.js");
+$.getScript("../appCarro/js/entity/Simulacao.js");
 
 function SistemaCarro(){
 
