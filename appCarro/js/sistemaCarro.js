@@ -3,8 +3,6 @@ var AppCarro = function SistemaCarro(){
 
   var app = {};
   function novoCarro(event){
-    //console.log('Alguém clicou no botão!')
-    //console.log(event);
     var carro = new Carro(
       document.getElementById('fabricante').value,
       document.getElementById('modelo').value,
@@ -12,10 +10,11 @@ var AppCarro = function SistemaCarro(){
       document.getElementById('cor').value,
       document.getElementById('placa').value
       );
+
     carros.push(carro);
     console.log('Adicionando ' + carro.toString());
     console.log(carros);
-    adicionaCarroALista(carro);
+    imprimirListaCarro();
     event.preventDefault();
   }
 
@@ -33,22 +32,46 @@ var AppCarro = function SistemaCarro(){
     simulacoes.push(simulacao);
     console.log('Adicionando ' + simulacao.toString());
     console.log(simulacoes);
-    adicionarSimulacaoALista(simulacao);
+    imprimirListaSimulacao();
     event.preventDefault();
   }
 
-  function adicionarSimulacaoALista(simulacao) {
-    var li = document.createElement('li');
-    li.textContent = simulacao.toString();
-    var lista = document.getElementById('listaSimulacao');
-    lista.appendChild(li);
+  function imprimirListaCarro() {
+    var lista = document.getElementById('lista');
+    lista.textContent = '';
+    for (var i = 0; i < carros.length; i++) {
+      var carro = carros[i];
+      var modelo = document.getElementById('modeloInformacaoCarro');
+      var copia = modelo.content.firstElementChild.cloneNode(true);
+      copia.querySelector('.fabricante').textContent = carro.fabricante;
+      copia.querySelector('.modelo').textContent = carro.modelo;
+      copia.querySelector('.ano').textContent = carro.ano;
+      copia.querySelector('.placa').textContent = carro.placa;
+      copia.querySelector('.cor').textContent = carro.cor;
+
+      var lista = document.getElementById('lista');
+      lista.appendChild(copia);
+    }
   }
 
-  function adicionaCarroALista(carro) {
-    var li = document.createElement('li');
-    li.textContent = carro.toString();
-    var lista = document.getElementById('lista');
-    lista.appendChild(li);
+  function imprimirListaSimulacao() {
+    var lista = document.getElementById('listaSimulacao');
+    lista.textContent = '';
+    for (var i = 0; i < simulacoes.length; i++) {
+      var simulacao = simulacoes[i];
+      var modelo = document.getElementById('modeloInformacaoSimulacao');
+      var copia = modelo.content.firstElementChild.cloneNode(true);
+      copia.querySelector('.codigoCarro').textContent = simulacao.codigoCarro;
+      copia.querySelector('.nomeCliente').textContent = simulacao.nomeCliente;
+      copia.querySelector('.opcao').textContent = simulacao.opcao;
+      copia.querySelector('.dataInicio').textContent = simulacao.dataInicio;
+      copia.querySelector('.dataTermino').textContent = simulacao.dataTermino;
+      copia.querySelector('.origem').textContent = simulacao.origem;
+      copia.querySelector('.destino').textContent = simulacao.destino;
+
+      var lista = document.getElementById('listaSimulacao');
+      lista.appendChild(copia);
+    }
   }
 
   function validaCharsPlaca(event){
