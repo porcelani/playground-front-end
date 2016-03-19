@@ -1,8 +1,7 @@
-$.getScript("../appCarro/js/entity/carro.js");
-$.getScript("../appCarro/js/entity/Simulacao.js");
 
-function SistemaCarro(){
+var AppCarro = function SistemaCarro(){
 
+  var app = {};
   function novoCarro(event){
     //console.log('Alguém clicou no botão!')
     //console.log(event);
@@ -70,19 +69,32 @@ function SistemaCarro(){
   var carros = [];
   var simulacoes = [];
 
-  var btnAdicionar = document.getElementById('btnAdicionar');
-  btnAdicionar.addEventListener('click', novoCarro);
+  function init() {
+    var btnAdicionar = document.getElementById('btnAdicionar');
+    btnAdicionar.addEventListener('click', novoCarro);
 
-  var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
-  btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
+    var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
+    btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
 
-  var inputPlaca = document.getElementById('placa');
-  inputPlaca.addEventListener('keyup', function(){
     var inputPlaca = document.getElementById('placa');
-    inputPlaca.value = inputPlaca.value.replace(/[^a-z0-9]/gmi,'');
-  }, false);
+    inputPlaca.addEventListener('keyup', function(){
+      var inputPlaca = document.getElementById('placa');
+      inputPlaca.value = inputPlaca.value.replace(/[^a-z0-9]/gmi,'');
+    }, false);
 
-  var inputDesativar = document.getElementById('desativaValPlaca');
-  inputDesativar.addEventListener('click', desativarValidacaoDaPlaca);
+    var inputDesativar = document.getElementById('desativaValPlaca');
+    inputDesativar.addEventListener('click', desativarValidacaoDaPlaca);
+  };
 
-}
+  app.init =  function() {
+      console.log('AppCarro.init');
+    init();
+    };
+  app.getCatalog = function() {
+      console.log('AppCarro.getCatalog');
+      return carros;
+    };
+
+  return app;
+
+}();
