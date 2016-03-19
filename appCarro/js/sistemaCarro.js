@@ -24,7 +24,7 @@ function SistemaCarro(){
     var simulacao = new Simulacao(
         document.getElementById('codigoCarro').value,
         document.getElementById('nomeCliente').value,
-        document.getElementById('opcao').value,
+        document.querySelector('.opcaoSimulacao:checked').value,
         document.getElementById('dataInicio').value,
         document.getElementById('dataTermino').value,
         document.getElementById('origem').value,
