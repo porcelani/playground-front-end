@@ -15,7 +15,7 @@ function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, ori
     this.origem = origem;
     this.destino = destino;
 
-    this.toString = function(){
+    this.printDados = function(){
         return this.idSimulacao + ' ' + this.codigoCarro + ' ' + this.nomeCliente + ' ' + this.opcao + ' ' +
             this.dataInicio + ' ' + this.dataTermino + ' ' + this.origem + ' ' + this.destino;
     }

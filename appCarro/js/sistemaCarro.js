@@ -2,6 +2,8 @@
 var AppCarro = function SistemaCarro(){
 
   var app = {};
+  var Storage = window.localStorage;
+
   function novoCarro(event){
     var carro = new Carro(
       document.getElementById('fabricante').value,
@@ -12,8 +14,7 @@ var AppCarro = function SistemaCarro(){
     );
 
     carros.push(carro);
-    console.log('Adicionando ' + carro.toString());
-    console.log(carros);
+    Storage.setItem('carrosList', JSON.stringify(carros));
     imprimirListaCarro();
     event.preventDefault();
   }
@@ -79,6 +80,15 @@ var AppCarro = function SistemaCarro(){
   var simulacoes = [];
 
   function init() {
+
+    var carrosLst = Storage.getItem('carrosList');
+    if (carrosLst !== null) {
+      carros = JSON.parse(carrosLst);
+      imprimirListaCarro();
+    } else {
+      carros = [];
+    }
+
     var btnAdicionar = document.getElementById('btnAdicionar');
     btnAdicionar.addEventListener('click', novoCarro);
 
