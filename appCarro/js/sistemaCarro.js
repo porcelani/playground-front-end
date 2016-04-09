@@ -74,6 +74,31 @@ var AppCarro = function SistemaCarro(){
       var inputPlaca = document.getElementById('placa');
       inputPlaca.value = inputPlaca.value.replace(/[^a-z0-9]/gmi,'');
     }, false);
+  };
+
+  var inputDestino = document.getElementById('destino');
+  inputDestino.addEventListener('blur', calcularDistancia);
+
+  var ultimaDistanciaCalculada = null;
+  function calcularDistancia(){
+    var origem = document.getElementById('origem').value;
+    var destino = document.getElementById('destino').value;
+    if (destino === '') {
+      return;
+    }
+    var directionsService = new google.maps.DirectionsService();
+    var request = {
+      origin      : origem,
+      destination : destino,
+      travelMode  : google.maps.DirectionsTravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status) {
+      if ( status === google.maps.DirectionsStatus.OK ) {
+        ultimaDistanciaCalculada = (response.routes[0].legs[0].distance.value)/1000;
+        var distanciaLabel = document.getElementById('distanciaCalculada');
+        distanciaLabel.innerText = ultimaDistanciaCalculada.toString().concat(' KM');
+      }
+    });
   }
 
   var carros = [];

@@ -5,6 +5,7 @@
     <title>Carros</title>
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap-theme.min.css">
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <script type="text/javascript" src="js/init.js"></script>
   </head>
   <body class="container">
@@ -46,8 +47,8 @@
               <input class="form-control" type="text" id="placa" value="">
             </div>
             </div>
-            <button type="button" id="btnAdicionar">adicionar</button>
-            <button type="button" id="desativaValPlaca">desativa validação da placa</button>
+            <button type="button" class="btn btn-success" id="btnAdicionar">adicionar</button>
+            <button type="button" class="btn btn-warning" id="desativaValPlaca">desativa validação da placa</button>
         </fieldset>
       </form>
         <ul id="lista">
@@ -114,11 +115,12 @@
                       <input class="col-md-3" type="text" id="origem">
                       <label class="control-label col-md-3" for="destino">Destino:</label>
                       <input class="col-md-3" type="text" id="destino">
+                      <label class="label label-primary" id="distanciaCalculada"></label>
                   </div>
               </div>
 
               <div id="col-md-12">
-                <button type="button" id="btnAdicionarSimulacao">Adicionar</button>
+                <button type="button" class="btn btn-success" id="btnAdicionarSimulacao">Adicionar</button>
               </div>
           </fieldset>
       </form>
