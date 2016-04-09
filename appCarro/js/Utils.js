@@ -1,9 +1,6 @@
 /**
  * Created by Edlaine on 19/03/16.
  */
-/**
- * Created by Edlaine on 19/03/16.
- */
 var Util = (function(){
     var util = {};
     util.replaceWithData = function (target, obj) {

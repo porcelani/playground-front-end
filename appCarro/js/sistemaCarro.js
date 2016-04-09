@@ -95,6 +95,9 @@ var AppCarro = function SistemaCarro(){
     var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
     btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
 
+    var btnTrajeto = document.getElementById('opcaoKm');
+    btnTrajeto.addEventListener('click', getLocation);
+
     var inputPlaca = document.getElementById('placa');
     inputPlaca.addEventListener('keyup', function(){
       var inputPlaca = document.getElementById('placa');

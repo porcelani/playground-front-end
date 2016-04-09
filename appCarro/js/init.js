@@ -17,6 +17,7 @@ function init(){
   loadScript('../appCarro/js/Utils.js', function(){
     loadScript('../appCarro/js/entity/Simulacao.js');
     loadScript('../appCarro/js/entity/Carro.js');
+    loadScript('../appCarro/js/geoLocation.js');
     loadScript('../appCarro/js/sistemaCarro.js', function() {
       AppCarro.init();
     });

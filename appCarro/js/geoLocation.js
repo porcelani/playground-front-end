@@ -76,16 +76,15 @@ var successCallback = function(position){
     var httpRequest = new XMLHttpRequest(url);
     httpRequest.open('GET', url);
     httpRequest.onreadystatechange = function() {
-        window.alert(this);
         if (this.readyState === 4) {
-
-            window.alert(resultado);
-            window.alert(this.responseText);
             resultado = JSON.parse(this.responseText);
-            console.log(getCity(resultado));
-            console.log(getCountry(resultado));
+            var origemCityJson = getCity(resultado);
+            var origemCountryJson = getCountry(resultado);
+            var origem = document.getElementById('origem');
+            origem.value = origemCityJson.concat(' - '.concat(origemCountryJson));
         }
     };
+    httpRequest.send();
 };
 
 var errorCallback = function(error){
