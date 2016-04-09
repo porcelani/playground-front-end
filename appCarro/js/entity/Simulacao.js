@@ -3,7 +3,7 @@
  */
 var idSimulacao = 0;
 
-function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino){
+function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino, distanciaCalculada){
     idSimulacao++;
 
     this.idSimulacao = idSimulacao;
@@ -14,9 +14,10 @@ function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, ori
     this.dataTermino = dataTermino;
     this.origem = origem;
     this.destino = destino;
+    this.distanciaCalculada = distanciaCalculada;
 
     this.printDados = function(){
         return this.idSimulacao + ' ' + this.codigoCarro + ' ' + this.nomeCliente + ' ' + this.opcao + ' ' +
-            this.dataInicio + ' ' + this.dataTermino + ' ' + this.origem + ' ' + this.destino;
+            this.dataInicio + ' ' + this.dataTermino + ' ' + this.origem + ' ' + this.destino + ' ' + this.distanciaCalculada;
     }
 }

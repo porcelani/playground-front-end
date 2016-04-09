@@ -27,12 +27,12 @@ var AppCarro = function SistemaCarro(){
         document.getElementById('dataInicio').value,
         document.getElementById('dataTermino').value,
         document.getElementById('origem').value,
-        document.getElementById('destino').value
+        document.getElementById('destino').value,
+        ultimaDistanciaCalculada
     );
 
     simulacoes.push(simulacao);
-    console.log('Adicionando ' + simulacao.toString());
-    console.log(simulacoes);
+    Storage.setItem('simulacaoList', JSON.stringify(simulacoes));
     imprimirListaSimulacao();
     event.preventDefault();
   }
@@ -54,6 +54,7 @@ var AppCarro = function SistemaCarro(){
     var lista = document.getElementById('listaSimulacao');
     lista.textContent = '';
     for (var i = 0; i < simulacoes.length; i++) {
+      debugger;
       var simulacao = simulacoes[i];
       var modelo = document.getElementById('modeloInformacaoSimulacao');
       var copia = modelo.content.firstElementChild.cloneNode(true);
@@ -112,6 +113,14 @@ var AppCarro = function SistemaCarro(){
       imprimirListaCarro();
     } else {
       carros = [];
+    }
+
+    var simulacaoLst = Storage.getItem('simulacaoList');
+    if (simulacaoLst !== null) {
+      simulacoes = JSON.parse(simulacaoLst);
+      imprimirListaSimulacao();
+    } else {
+      simulacoes = [];
     }
 
     var btnAdicionar = document.getElementById('btnAdicionar');
