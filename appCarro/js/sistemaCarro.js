@@ -1,4 +1,3 @@
-
 var AppCarro = function SistemaCarro(){
 
   var app = {};
@@ -55,6 +54,7 @@ var AppCarro = function SistemaCarro(){
   }
 
   function imprimirListaCarro() {
+      debugger;
     var lista = document.getElementById('lista');
     lista.textContent = '';
 
@@ -65,6 +65,14 @@ var AppCarro = function SistemaCarro(){
       var modelo = document.getElementById('modeloInformacaoCarro');
       var copia = modelo.content.firstElementChild.cloneNode(true);
       Util.replaceWithData(copia, carro);
+      copia.setAttribute('data-codigo',carro.codigoCarro);
+
+      var btnExcluir = copia.querySelector('.btrExluirCarro');
+      btnExcluir.addEventListener('click', function(ev){
+          var codigo=parseInt(ev.target.parentNode.getAttribute('data-codigo'));
+          excluirCarro(codigo);
+      });
+
       var lista = document.getElementById('lista');
       lista.appendChild(copia);
 
@@ -75,7 +83,21 @@ var AppCarro = function SistemaCarro(){
     }
   }
 
-  function imprimirListaSimulacao() {
+    function excluirCarro(codigo){
+        carrosList = carros.filter(function(element){
+          debugger;
+            if (element.codigoCarro===codigo) {
+                return false;
+            } else {
+                return true;
+            }
+        });
+        Storage.setItem('carrosList',JSON.stringify(carrosList));
+        debugger;
+        imprimirListaCarro();
+    }
+
+    function imprimirListaSimulacao() {
     var lista = document.getElementById('listaSimulacao');
     lista.textContent = '';
     for (var i = 0; i < simulacoes.length; i++) {
@@ -86,6 +108,7 @@ var AppCarro = function SistemaCarro(){
       var lista = document.getElementById('listaSimulacao');
       lista.appendChild(copia);
     }
+
   }
 
   function validaCharsPlaca(event){
@@ -131,9 +154,9 @@ var AppCarro = function SistemaCarro(){
 
   function init() {
 
-    var carrosLst = Storage.getItem('carrosList');
-    if (carrosLst !== null) {
-      carros = JSON.parse(carrosLst);
+    var carrosList = Storage.getItem('carrosList');
+    if (carrosList !== null) {
+      carros = JSON.parse(carrosList);
       imprimirListaCarro();
     } else {
       carros = [];
