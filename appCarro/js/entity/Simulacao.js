@@ -3,10 +3,9 @@
  */
 var idSimulacao = 0;
 
-function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino, distanciaCalculada){
-    idSimulacao++;
+function Simulacao(codigoCarro, nomeCliente, opcao, dataInicio, dataTermino, origem, destino, distanciaCalculada, codigoSimulacao){
 
-    this.idSimulacao = idSimulacao;
+    this.idSimulacao = codigoSimulacao;
     this.codigoCarro = codigoCarro;
     this.nomeCliente = nomeCliente;
     this.opcao = opcao;

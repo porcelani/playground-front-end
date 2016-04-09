@@ -3,14 +3,18 @@ var AppCarro = function SistemaCarro(){
 
   var app = {};
   var Storage = window.localStorage;
+  var codigoCarro = 0;
+  var codigoSimulacao = 0;
 
   function novoCarro(event){
+    codigoCarro++;
     var carro = new Carro(
       document.getElementById('fabricante').value,
       document.getElementById('modelo').value,
       document.getElementById('ano').value,
       document.getElementById('cor').value,
-      document.getElementById('placa').value
+      document.getElementById('placa').value,
+      codigoCarro
     );
 
     carros.push(carro);
@@ -20,15 +24,21 @@ var AppCarro = function SistemaCarro(){
   }
 
   function novaSimulacao(event){
+    codigoSimulacao++;
+    var select = document.getElementById('codigoCarro');
+    var index = select.selectedIndex;
+    var carroSelecionado = select[index];
+    var carro = carroSelecionado.innerText;
     var simulacao = new Simulacao(
-        document.getElementById('codigoCarro').value,
+        carro,
         document.getElementById('nomeCliente').value,
         document.querySelector('.opcaoSimulacao:checked').value,
         document.getElementById('dataInicio').value,
         document.getElementById('dataTermino').value,
         document.getElementById('origem').value,
         document.getElementById('destino').value,
-        ultimaDistanciaCalculada
+        ultimaDistanciaCalculada,
+        codigoSimulacao
     );
 
     simulacoes.push(simulacao);
@@ -37,9 +47,19 @@ var AppCarro = function SistemaCarro(){
     event.preventDefault();
   }
 
+  function limparOpcoesCarro(selectbox) {
+    var i;
+    for(i=selectbox.options.length-1;i>=0;i--) {
+      selectbox.remove(i);
+    }
+  }
+
   function imprimirListaCarro() {
     var lista = document.getElementById('lista');
     lista.textContent = '';
+
+    var optionsCarro = document.getElementById('codigoCarro');
+    limparOpcoesCarro(optionsCarro);
     for (var i = 0; i < carros.length; i++) {
       var carro = carros[i];
       var modelo = document.getElementById('modeloInformacaoCarro');
@@ -47,6 +67,11 @@ var AppCarro = function SistemaCarro(){
       Util.replaceWithData(copia, carro);
       var lista = document.getElementById('lista');
       lista.appendChild(copia);
+
+      var option = document.createElement('option');
+      option.setAttribute('value', carro.codigoCarro);
+      option.innerText = carro.codigoCarro + ' - '+ carro.modelo;
+      optionsCarro.appendChild(option);
     }
   }
 
@@ -54,7 +79,6 @@ var AppCarro = function SistemaCarro(){
     var lista = document.getElementById('listaSimulacao');
     lista.textContent = '';
     for (var i = 0; i < simulacoes.length; i++) {
-      debugger;
       var simulacao = simulacoes[i];
       var modelo = document.getElementById('modeloInformacaoSimulacao');
       var copia = modelo.content.firstElementChild.cloneNode(true);

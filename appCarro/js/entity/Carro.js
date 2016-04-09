@@ -1,9 +1,8 @@
 var codigoCarro = 0;
 
-function Carro(fab, mod, ano, cor, pla){
-    codigoCarro++;
+function Carro(fab, mod, ano, cor, pla, codigo){
 
-    this.codigoCarro = codigoCarro;
+    this.codigoCarro = codigo;
     this.fabricante = fab;
     this.modelo = mod;
     this.ano = ano;
