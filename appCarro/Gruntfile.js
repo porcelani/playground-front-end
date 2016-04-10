@@ -1,11 +1,20 @@
 module.exports = function(grunt){
     'use strict';
 
-    // CONFIGURAÇÕES iniciais do grunt e plugins
+    // CONFIGURAÇÕES INICIAIS DO GRUNT
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
-        // configuração dos plugins
+        // CONFIGURAÇÃO DOS PLUGINS
+        jasmine: {
+            pivotal: {
+                src: 'src/**/*.js',
+                options: {
+                    specs: 'spec/*Spec.js',
+                    helpers: 'spec/*Helper.js'
+                }
+            }
+        },
 
         uglify: {
             my_target: {
@@ -49,7 +58,6 @@ module.exports = function(grunt){
 
         },
 
-
         copy: {
             main: {
                 files: [
@@ -69,18 +77,18 @@ module.exports = function(grunt){
     });
 
     // CARREGAMENTO das tarefas NPM
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
+
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-htmlmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    // ...
 
     // TAREFAS CUSTOMIZADAS
-
-    //TODO REGISTRAR A TAREFA DE EXECUÇÃO DOS TESTES UNITÁRIOS
-    grunt.registerTask('preparaAppCarros', [ 'uglify','cssmin','htmlmin','copy' ]);//TODO CONTRUIR A TAREFA DE EMPACOTAMENTO PARA DEPLOY
-    //TODO REGISTRAR A TAREFA DE EXECUÇÃO DOS TESTES DE INTEGRAÇÃO
-
-    // ...
+    grunt.registerTask('install', [
+        'jasmine',                              //Unit test
+        'uglify','cssmin','htmlmin','copy'      //Build
+        //TODO REGISTRAR A TAREFA DE EXECUÇÃO DOS TESTES DE INTEGRAÇÃO
+    ]);
 
 };
