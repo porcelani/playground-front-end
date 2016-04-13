@@ -90,7 +90,6 @@ var AppCarro = function SistemaCarro(){
 
     function excluirCarro(codigo){
         carrosList = carros.filter(function(element){
-          debugger;
             if (element.codigoCarro===codigo) {
                 return false;
             } else {
@@ -98,20 +97,48 @@ var AppCarro = function SistemaCarro(){
             }
         });
         Storage.setItem('carrosList',JSON.stringify(carrosList));
-        debugger;
         imprimirListaCarro();
     }
 
+  function excluirSimulacao(codigo){
+    simulacoesList = simulacoes.filter(function(element){
+      if (element.idSimulacao===codigo) {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    Storage.setItem('simulacaoList',JSON.stringify(simulacoesList));
+    imprimirListaSimulacao();
+  }
+
     function imprimirListaSimulacao() {
-    var lista = document.getElementById('listaSimulacao');
-    lista.textContent = '';
-    for (var i = 0; i < simulacoes.length; i++) {
-      var simulacao = simulacoes[i];
-      var modelo = document.getElementById('modeloInformacaoSimulacao');
-      var copia = modelo.content.firstElementChild.cloneNode(true);
-      Util.replaceWithData(copia, simulacao);
+
+      var simulacaoLst = Storage.getItem('simulacaoList');
+      if (simulacaoLst !== null) {
+        simulacoes = JSON.parse(simulacaoLst);
+      } else {
+        simulacoes = [];
+      }
+
       var lista = document.getElementById('listaSimulacao');
-      lista.appendChild(copia);
+      lista.textContent = '';
+      for (var i = 0; i < simulacoes.length; i++) {
+        var simulacao = simulacoes[i];
+        var modelo = document.getElementById('modeloInformacaoSimulacao');
+        var copia = modelo.content.firstElementChild.cloneNode(true);
+        Util.replaceWithData(copia, simulacao);
+
+        copia.setAttribute('data-codigo',simulacao.idSimulacao);
+
+        var btnExcluir = copia.querySelector('.btrExluirSimulacao');
+        btnExcluir.addEventListener('click', function(ev){
+          var codigo=parseInt(ev.target.parentNode.getAttribute('data-codigo'));
+          excluirSimulacao(codigo);
+        });
+
+        var lista = document.getElementById('listaSimulacao');
+        lista.appendChild(copia);
     }
 
   }
@@ -160,14 +187,7 @@ var AppCarro = function SistemaCarro(){
   function init() {
 
     imprimirListaCarro();
-
-    var simulacaoLst = Storage.getItem('simulacaoList');
-    if (simulacaoLst !== null) {
-      simulacoes = JSON.parse(simulacaoLst);
-      imprimirListaSimulacao();
-    } else {
-      simulacoes = [];
-    }
+    imprimirListaSimulacao();
 
     var btnAdicionar = document.getElementById('btnAdicionar');
     btnAdicionar.addEventListener('click', novoCarro);
