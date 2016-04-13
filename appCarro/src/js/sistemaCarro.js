@@ -54,7 +54,12 @@ var AppCarro = function SistemaCarro(){
   }
 
   function imprimirListaCarro() {
-      debugger;
+    var carrosList = Storage.getItem('carrosList');
+    if (carrosList !== null) {
+      carros = JSON.parse(carrosList);
+    } else {
+      carros = [];
+    }
     var lista = document.getElementById('lista');
     lista.textContent = '';
 
@@ -154,13 +159,7 @@ var AppCarro = function SistemaCarro(){
 
   function init() {
 
-    var carrosList = Storage.getItem('carrosList');
-    if (carrosList !== null) {
-      carros = JSON.parse(carrosList);
-      imprimirListaCarro();
-    } else {
-      carros = [];
-    }
+    imprimirListaCarro();
 
     var simulacaoLst = Storage.getItem('simulacaoList');
     if (simulacaoLst !== null) {
