@@ -51,18 +51,32 @@
             <button type="button" class="btn btn-warning" id="desativaValPlaca">desativa validação da placa</button>
         </fieldset>
       </form>
-        <ul id="lista">
+        <div class="row col-md-6 col-md-offset-2 custyle">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Fabricante</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Cor</th>
+                <th>Placa</th>
+                <th class="text-center">Ação</th>
+            </tr>
+            </thead>
+            <tbody id="lista">
 
-        </ul>
+            </tbody>
+        </table>
+        </div>
         <template id="modeloInformacaoCarro">
-            <li data-codigo="">
-                <strong>{{fabricante}}</strong>
-                {{modelo}}
-                {{ano}}
-                {{cor}}
-                <kbd>{{placa}}</kbd>
-            <button  class="btrExluirCarro btn btn-danger">Excluir</button>
-            </li>
+            <tr data-codigo="">
+                <td><strong>{{fabricante}}</strong></td>
+                <td>{{modelo}}</td>
+                <td>{{ano}}</td>
+                <td>{{cor}}</td>
+                <td><kbd>{{placa}}</kbd></td>
+                <td><button  class="btrExluirCarro btn btn-danger">Excluir</button></td>
+            </tr>
         </template>
     </section>
 
