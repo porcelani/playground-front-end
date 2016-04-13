@@ -51,7 +51,7 @@
             <button type="button" class="btn btn-warning" id="desativaValPlaca">desativa validação da placa</button>
         </fieldset>
       </form>
-        <div class="row col-md-6 col-md-offset-2 custyle">
+        <div class="row col-md-12">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -138,20 +138,39 @@
               </div>
           </fieldset>
       </form>
-      <ul id="listaSimulacao">
-      </ul>
+
+      <div class="row col-md-12">
+          <table class="table table-striped">
+              <thead>
+              <tr>
+                  <th>Carro</th>
+                  <th>Cliente</th>
+                  <th>Opção</th>
+                  <th>Dt.Início</th>
+                  <th>Dt.Final</th>
+                  <th>Origem</th>
+                  <th>Destino</th>
+                  <th>Distancia</th>
+                  <th class="text-center">Ação</th>
+              </tr>
+              </thead>
+              <tbody id="listaSimulacao">
+
+              </tbody>
+          </table>
+      </div>
       <template id="modeloInformacaoSimulacao">
-          <li>
-              <strong>{{codigoCarro}}</strong>
-              {{nomeCliente}}
-              {{opcao}}
-              {{dataInicio}}
-              {{dataTermino}}
-              {{origem}}
-              {{destino}}
-              {{distanciaCalculada}}
-              <button class="btrExluirSimulacao btn btn-danger">Excluir</button>
-          </li>
+          <tr data-codigo="">
+              <td><strong>{{codigoCarro}}</strong></td>
+              <td>{{nomeCliente}}</td>
+              <td>{{opcao}}</td>
+              <td>{{dataInicio}}</td>
+              <td>{{dataTermino}}</td>
+              <td>{{origem}}</td>
+              <td>{{destino}}</td>
+              <td>{{distanciaCalculada}}</td>
+              <td><button  class="btrExluirSimulacao btn btn-danger">Excluir</button></td>
+          </tr>
       </template>
   </section>
 

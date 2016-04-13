@@ -133,7 +133,7 @@ var AppCarro = function SistemaCarro(){
 
         var btnExcluir = copia.querySelector('.btrExluirSimulacao');
         btnExcluir.addEventListener('click', function(ev){
-          var codigo=parseInt(ev.target.parentNode.getAttribute('data-codigo'));
+          var codigo=parseInt(ev.target.parentNode.parentNode.getAttribute('data-codigo'));
           excluirSimulacao(codigo);
         });
 
