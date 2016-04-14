@@ -179,13 +179,25 @@ var AppCarro = function SistemaCarro(){
         distanciaLabel.innerText = ultimaDistanciaCalculada.toString().concat(' KM');
       }
     });
+  };
+
+  function esconderTabCarro() {
+    managerCarro.setAttribute('style', 'display: none');
+    managerSimulacao.setAttribute('style', 'display: inherit');
+  }
+
+  function esconderTabSimulacao() {
+    managerSimulacao.setAttribute('style', 'display: none');
+    managerCarro.setAttribute('style', 'display: inherit');
   }
 
   var carros = [];
   var simulacoes = [];
-
+  var managerCarro;
+  var managerSimulacao;
   function init() {
-
+    managerCarro = document.getElementById('managerCarro');
+    managerSimulacao = document.getElementById('manager-Simulacao');
     imprimirListaCarro();
     imprimirListaSimulacao();
 
@@ -206,6 +218,13 @@ var AppCarro = function SistemaCarro(){
 
     var inputDesativar = document.getElementById('desativaValPlaca');
     inputDesativar.addEventListener('click', desativarValidacaoDaPlaca);
+
+    debugger;
+    var tabCarro = document.getElementById('carroTab');
+    tabCarro.addEventListener('click', esconderTabSimulacao);
+
+    var tabSimulacao = document.getElementById('simulacaoTab');
+    tabSimulacao.addEventListener('click', esconderTabCarro);
   };
 
   app.init =  function() {

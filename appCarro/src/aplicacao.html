@@ -11,8 +11,12 @@
   <body class="container col-md-12">
   <div class="panel panel-default col-md-12">
       <div class="panel-heading"><h1>Aplicação</h1></div>
-      <div class="panel-body ">
-    <section id="managerCarro" class="col-md-6">
+      <ul class="nav nav-tabs">
+          <li role="presentation" class="active"><a href="#" id="carroTab">Carros</a></li>
+          <li role="presentation" ><a href="#" id="simulacaoTab">Simulações</a></li>
+      </ul>
+   <div class="panel-body ">
+    <section id="managerCarro" class="col-md-6" style="display : inherit">
       <h1>Carros</h1>
 
       <form id="formNovoCarro">
@@ -81,7 +85,7 @@
         </template>
     </section>
 
-  <section id="manager-Simulacao" class="col-md-6">
+  <section id="manager-Simulacao" class="col-md-6" style="display : none">
       <h1>Simulações</h1>
 
       <form id="formNovaSimulacao">
