@@ -206,6 +206,10 @@ var AppCarro = function SistemaCarro(){
     getLocation();
   }
 
+  function adicionarEventoClick(objeto, funcao) {
+    objeto.addEventListener('click', funcao);
+  }
+
   var carros = [];
   var simulacoes = [];
   var managerCarro;
@@ -223,18 +227,13 @@ var AppCarro = function SistemaCarro(){
     imprimirListaCarro();
     imprimirListaSimulacao();
 
-
-    var btnAdicionar = document.getElementById('btnAdicionar');
-    btnAdicionar.addEventListener('click', novoCarro);
-
-    var opcaoDias = document.getElementById('opcaoDias');
-    opcaoDias.addEventListener('click', esconderOpcoesTrajeto);
-
-    var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
-    btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
-
-    var btnTrajeto = document.getElementById('opcaoKm');
-    btnTrajeto.addEventListener('click', clickOpcaoTrajeto);
+    adicionarEventoClick(document.getElementById('btnAdicionar'), novoCarro)
+    adicionarEventoClick(document.getElementById('btnAdicionarSimulacao'), novaSimulacao)
+    adicionarEventoClick(document.getElementById('opcaoDias'), esconderOpcoesTrajeto)
+    adicionarEventoClick(document.getElementById('opcaoKm'), clickOpcaoTrajeto)
+    adicionarEventoClick(document.getElementById('desativaValPlaca'), desativarValidacaoDaPlaca)
+    adicionarEventoClick(document.getElementById('carroTab'), esconderTabSimulacao)
+    adicionarEventoClick(document.getElementById('simulacaoTab'), esconderTabCarro)
 
     var inputPlaca = document.getElementById('placa');
     inputPlaca.addEventListener('keyup', function(){
@@ -242,15 +241,7 @@ var AppCarro = function SistemaCarro(){
       inputPlaca.value = inputPlaca.value.replace(/[^a-z0-9]/gmi,'');
     }, false);
 
-    var inputDesativar = document.getElementById('desativaValPlaca');
-    inputDesativar.addEventListener('click', desativarValidacaoDaPlaca);
 
-    debugger;
-    var tabCarro = document.getElementById('carroTab');
-    tabCarro.addEventListener('click', esconderTabSimulacao);
-
-    var tabSimulacao = document.getElementById('simulacaoTab');
-    tabSimulacao.addEventListener('click', esconderTabCarro);
   };
 
   app.init =  function() {
