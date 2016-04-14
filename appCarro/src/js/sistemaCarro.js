@@ -191,24 +191,50 @@ var AppCarro = function SistemaCarro(){
     managerCarro.setAttribute('style', 'display: inherit');
   }
 
+  function esconderOpcoesTrajeto() {
+    opcoesPeriodo.setAttribute('style', 'display: inherit');
+    opcoesKm.setAttribute('style', 'display: none');
+  }
+
+  function esconderOpcoesPeriodo() {
+    opcoesPeriodo.setAttribute('style', 'display: none');
+    opcoesKm.setAttribute('style', 'display: inherit');
+  }
+
+  function clickOpcaoTrajeto() {
+    esconderOpcoesPeriodo();
+    getLocation();
+  }
+
   var carros = [];
   var simulacoes = [];
   var managerCarro;
   var managerSimulacao;
+  var opcoesPeriodo;
+  var opcoesKm;
   function init() {
     managerCarro = document.getElementById('managerCarro');
     managerSimulacao = document.getElementById('manager-Simulacao');
+    opcoesPeriodo = document.getElementById('opcoesPeriodo');
+    opcoesKm = document.getElementById('opcoesKm');
+
+    esconderOpcoesTrajeto();
+
     imprimirListaCarro();
     imprimirListaSimulacao();
 
+
     var btnAdicionar = document.getElementById('btnAdicionar');
     btnAdicionar.addEventListener('click', novoCarro);
+
+    var opcaoDias = document.getElementById('opcaoDias');
+    opcaoDias.addEventListener('click', esconderOpcoesTrajeto);
 
     var btnAdicionarSimulacao = document.getElementById('btnAdicionarSimulacao');
     btnAdicionarSimulacao.addEventListener('click', novaSimulacao);
 
     var btnTrajeto = document.getElementById('opcaoKm');
-    btnTrajeto.addEventListener('click', getLocation);
+    btnTrajeto.addEventListener('click', clickOpcaoTrajeto);
 
     var inputPlaca = document.getElementById('placa');
     inputPlaca.addEventListener('keyup', function(){
