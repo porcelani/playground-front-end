@@ -1,0 +1,44 @@
+<html ng-app="users">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Telefonica</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-messages.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers/usersCtrl.js"></script>
+    <script src="js/services/contatosAPIService.js"></script>
+    <script src="js/value/configValue.js"></script>
+</head>
+<body ng-controller="usersCtrl">
+<div class="jumbotron">
+
+    <table ng-show="contatos.length > 0" class="table table-striped">
+        {{app}}
+        <tr ng-repeat="contato in contatos">
+
+            <td>
+                <img src="img/fig1.jpg">
+            </td>
+
+            <td>
+                Nome: {{contato.name}}</br>
+                Email: {{contato.email}}</br>
+                Telefone: {{contato.phone}}</br>
+
+                <input class="form-control" type="text" ng-model="clientPhone" placeholder="Informe seu contato"
+                       ng-required="true"/>
+
+                <button class="btn btn-primary btn-block" ng-click="sendMsg(clientPhone,contato.email)">Contrate-me
+                </button>
+
+            </td>
+        </tr>
+    </table>
+
+</div>
+<div ng-include="'view/footer.html'"></div>
+</body>
+</html>
+
