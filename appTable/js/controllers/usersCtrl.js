@@ -1,4 +1,4 @@
-angular.module("users").controller("usersCtrl", function ($scope, contatosAPI) {
+angular.module("users").controller("usersCtrl", function ($scope, contatosAPI,emailAPI) {
 	$scope.app = "Nossos profissionais";
 	$scope.clientPhone = "";
 	$scope.contatos = [];
@@ -11,8 +11,14 @@ angular.module("users").controller("usersCtrl", function ($scope, contatosAPI) {
 		});
 	};
 
-	$scope.sendMsg = function (phoneClient, contatoEmail) {
-		console.info(phoneClient +"Enviado para "+ contatoEmail);
+	$scope.sendMsg = function (msg, emailProfessional) {
+		console.info(msg.clientPhone +" Enviado para "+ emailProfessional);
+
+		msg.emailProfessional=emailProfessional;
+
+		emailAPI.saveEmail(msg).success(function (data) {
+			carregarContatos();
+		});
 	};
 
 	carregarContatos();
